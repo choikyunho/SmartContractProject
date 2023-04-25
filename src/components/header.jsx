@@ -12,7 +12,7 @@ const Header = ({ account, setAccount }) => {
     try{
         const response = await axios.get('https://api.upbit.com/v1/ticker?markets=KRW-BTC,%20KRW-MATIC,%20KRW-xrp');
 
-        console.log(response);
+        // console.log(response);
         setCoinPrice([
             {Symbol:"BTC",price:response.data[0].trade_price},
             {Symbol:"MATIC",price:response.data[1].trade_price},        
@@ -45,9 +45,9 @@ const Header = ({ account, setAccount }) => {
           <div className="ml-1 text-xl">Ble-Chess</div>
         </div>
       </Link>
-        <div>
+        <div className="flex items-center"> 
          {coinprice && (
-            <ul>
+            <ul className="flex text-gray-400 text-sm">  
                 {coinprice.map((v,i)=>{
                     return(
                         <li key={i} className="ml-2">

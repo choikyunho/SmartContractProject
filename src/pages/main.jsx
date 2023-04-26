@@ -31,7 +31,7 @@ const Main = ({account})=>{
     
             const response= await contract.methods.totalSupply().call();
             setMintedNft(response);
-            setPage(parseInt((parseInt(response) - 1) / 2) + 1);
+            setPage(parseInt((parseInt(response) - 1) / 10) + 1);
     
         }catch(error){
             console.error(error);
@@ -61,7 +61,7 @@ const Main = ({account})=>{
     return (
         <div>
             <Intro totalNft={totalnft} mintedNft={mintedNft} myNft={myNft}/>
-            <Nfts page={page}/>
+            <Nfts page={page} mintedNft={mintedNft} />
         </div>
 
     );

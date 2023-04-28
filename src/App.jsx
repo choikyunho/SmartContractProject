@@ -1,22 +1,28 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./pages/main";
 import Detail from "./pages/detail";
-import Header from "./components/header";
+
 import { useState } from "react";
+import Login from "./pages/login";
 
 function App(){
   const [account,setAccount] = useState("");
 
-  return (
-    <BrowserRouter>
-    <div className="bg-gray-950 min-h-screen text-white">
-     <Header account={account} setAccount={setAccount} />
-      <Routes>
-       <Route path="/" element={<Main account={account} />} />
-       <Route path="/:tokenId"  element={<Detail/>} />
-      </Routes>
-    </div>;
-    </BrowserRouter>
+    return (
+      <BrowserRouter>
+        <div className="bg-gray-950 min-h-screen text-white">
+          <Routes>
+            <Route path="/" element={<Login/>} />
+            <Route
+              path="/Main"
+              element={<Main account={account} setAccount={setAccount} />}
+            />
+            <Route path="/Main/:tokenId" element={<Detail />} />
+          </Routes>
+        </div>
+        ;
+      </BrowserRouter>
+
   );}
 
 export default App;
